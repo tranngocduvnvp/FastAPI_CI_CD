@@ -16,6 +16,9 @@ def test_add_endpoint():
     response = client.get("/add?x=100&y=-99")
     assert response.status_code == 200
     assert response.json() == {"result": 1}
+    response = client.get("/add?x=100&y=-80")
+    assert response.status_code == 200
+    assert response.json() == {"result": 20}
 
 def test_add_endpoint_invalid_input():
     response = client.get("/add?x=abc&y=def")
